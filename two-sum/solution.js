@@ -1,10 +1,11 @@
 let solution = (nums, target) => {
-  for (var i = 0; i < nums.length; i++) {
-    for (var j = i + 1; j < nums.length; j++) {
-      if (nums[i] + nums[j] === target) {
-        return [i, j];
-      }
+  let map = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    let searchedValue = target - nums[i];
+    if (map.has(searchedValue)) {
+      return [map.get(searchedValue), i];
     }
+    map.set(nums[i], i);
   }
 };
 
